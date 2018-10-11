@@ -6,7 +6,7 @@ module Api
       # GET /schools
       def index
         @schools = School.all
-        render json: @schools, include: ['users']
+        render json: @schools, include: ['users', 'tournaments']
       end
 
       # GET /schools/1

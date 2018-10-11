@@ -18,7 +18,7 @@ end
 
 
 School.all.each do |school|
-  Tournament.create({ name: school.name + "invitational", school_id: school.id})
+  Tournament.create({ name: school.name + " invitational", school_id: school.id})
 end
 
 Tournament.all.each do |t|
