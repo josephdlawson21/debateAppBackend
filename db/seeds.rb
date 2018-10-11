@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+schools = [ "LSUS", "UAM", "Union", "idk man"]
+
+cool = schools.each { |e| School.create({name: e}) }
+
+
+10.times do |i|
+  User.create({ name: Faker::Name.unique.name, school_id: School.order("RANDOM()").first.id})
+end
