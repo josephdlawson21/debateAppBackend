@@ -10,13 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181011004017) do
+ActiveRecord::Schema.define(version: 20181011203730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "round_users", force: :cascade do |t|
+    t.integer "round_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rounds", force: :cascade do |t|
+    t.integer "aff_id"
+    t.integer "neg_id"
+    t.integer "winner_id"
+    t.integer "tournament_id"
+    t.string "round"
+    t.integer "aff_speaker_points"
+    t.integer "neg_speaker_points"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "schools", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tournament_rounds", force: :cascade do |t|
+    t.integer "round_id"
+    t.integer "tournament_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tournaments", force: :cascade do |t|
+    t.string "name"
+    t.integer "school_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

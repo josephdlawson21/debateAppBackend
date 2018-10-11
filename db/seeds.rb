@@ -7,11 +7,26 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-schools = [ "LSUS", "UAM", "Union", "idk man"]
+schools = [ "LSUS", "UAM", "Union", "La Tech"]
 
-cool = schools.each { |e| School.create({name: e}) }
+schools.each { |e| School.create({name: e}) }
 
 
 10.times do |i|
   User.create({ name: Faker::Name.unique.name, school_id: School.order("RANDOM()").first.id})
+end
+
+
+School.all.each do |school|
+  Tournament.create({ name: school.name + "invitational", school_id: school.id})
+end
+
+Tournament.all.each do |t|
+  15.times do |i|
+    r = Round.new()
+    r.tournament = t
+    t.rounds << r
+    User.order("RANDOM()").first.rounds << r
+    r.save
+  end
 end

@@ -47,7 +47,7 @@ module Api
 
         # Only allow a trusted parameter "white list" through.
         def school_params
-          params.require(:school).permit(:name)
+          params.permit(:name)
         end
     end
 

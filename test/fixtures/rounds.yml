@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  affirmative: 1
+  negative: 1
+  type: 
+
+two:
+  affirmative: 1
+  negative: 1
+  type: 
