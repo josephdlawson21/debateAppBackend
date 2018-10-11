@@ -4,8 +4,7 @@ class SchoolsController < ApplicationController
   # GET /schools
   def index
     @schools = School.all
-
-    render json: @schools
+    render json: @schools, include: ['users']
   end
 
   # GET /schools/1
