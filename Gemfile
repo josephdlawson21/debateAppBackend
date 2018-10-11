@@ -45,6 +45,8 @@ group :production do
 
   gem 'rails_12factor'
 
+  gem 'pg'
+
   # Use SCSS for stylesheets
   gem 'sass-rails'
 end
