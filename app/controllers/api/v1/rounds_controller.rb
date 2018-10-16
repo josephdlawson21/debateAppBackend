@@ -20,7 +20,13 @@ module Api
         @round = Round.new(round_params)
 
         if @round.save
-          render json: @round, status: :created, location: @round
+          aff = User.find(@round.aff_id)
+          neg = User.find(@round.neg_id)
+
+          aff.rounds << @round
+          neg.rounds << @round
+
+          render json: @round, status: :created
         else
           render json: @round.errors, status: :unprocessable_entity
         end
@@ -48,7 +54,7 @@ module Api
 
         # Only allow a trusted parameter "white list" through.
         def round_params
-          params.require(:round).permit(:affirmative, :negative, :type)
+          params.permit(:aff_id, :neg_id, :winner_id, :tournament_id, :division, :round, :aff_speaker_points, :neg_speaker_points, :round_type)
         end
     end
   end

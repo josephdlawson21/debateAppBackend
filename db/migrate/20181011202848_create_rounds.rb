@@ -9,7 +9,7 @@ class CreateRounds < ActiveRecord::Migration[5.1]
       t.string :round
       t.integer :aff_speaker_points
       t.integer :neg_speaker_points
-      t.string :type
+      t.string :round_type
 
       t.timestamps
     end

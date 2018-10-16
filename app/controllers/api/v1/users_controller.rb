@@ -12,7 +12,7 @@ module Api
 
       # GET /users/1
       def show
-        render json: @user, include: ['school']
+        render json: @user, include: ['school', 'rounds']
       end
 
       # POST /users
@@ -48,7 +48,7 @@ module Api
 
         # Only allow a trusted parameter "white list" through.
         def user_params
-          params.require(:user).permit(:name, :school_id)
+          params.permit(:name, :school_id, :username, :password)
         end
     end
   end

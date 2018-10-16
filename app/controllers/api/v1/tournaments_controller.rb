@@ -20,7 +20,7 @@ module Api
         @tournament = Tournament.new(tournament_params)
 
         if @tournament.save
-          render json: @tournament, status: :created, location: @tournament
+          render json: @tournament, status: :created
         else
           render json: @tournament.errors, status: :unprocessable_entity
         end
@@ -48,7 +48,7 @@ module Api
 
         # Only allow a trusted parameter "white list" through.
         def tournament_params
-          params.fetch(:tournament, {})
+          params.permit(:name, :school_id)
         end
     end
   end
