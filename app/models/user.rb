@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_secure_password
   belongs_to :school
 
   has_many :round_users
